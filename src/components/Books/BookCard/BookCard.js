@@ -16,7 +16,7 @@ const BookCard = ({ book }) => {
     <Link className="col-4" to={book._id}>
       <img src={book.images[0].url} alt="" />
       <h4>{book.name}</h4>
-      <div class="review-section">
+      <div className="review-section">
         <ReactStars {...options} />
         <span>({book.numOfReviews} Reviews)</span>
       </div>

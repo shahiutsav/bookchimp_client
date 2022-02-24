@@ -3,28 +3,42 @@ import "./Books.css";
 import MetaData from "../layout/MetaData";
 import { getBook } from "../../actions/bookAction";
 import { useSelector, useDispatch } from "react-redux";
+import Loader from "../layout/Loader/Loader";
 
 import BookCard from "./BookCard/BookCard";
 
+import { useAlert } from "react-alert";
 
 const Book = () => {
+  const alert = useAlert();
+
   const dispatch = useDispatch();
   const { loading, error, books, bookCount } = useSelector(
     (state) => state.books
   );
 
   useEffect(() => {
+    if (error) {
+      return alert.error(error);
+    }
     dispatch(getBook());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>
-      <MetaData title="BookChimp" />
+      <MetaData title="BookChimp - Home" />
       <div className="small-container">
         <h2 className="title">Featured Books</h2>
-        <div className="row">
-          {books && books.map((book) => <BookCard book={book} />)}
-        </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Fragment>
+            <div className="row">
+              {books &&
+                books.map((book) => <BookCard book={book} key={book._id} />)}
+            </div>
+          </Fragment>
+        )}
       </div>
     </Fragment>
   );
