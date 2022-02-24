@@ -21,6 +21,7 @@ ul {
   padding: 70px 0;
   background-color: rgb(34, 33, 33);
   color: white;
+  margin-top: 10vmax;
 }
 
 .footer-col {
