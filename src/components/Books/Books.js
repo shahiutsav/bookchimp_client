@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import "./Books.css";
 import MetaData from "../layout/MetaData";
-import { getBook } from "../../actions/bookAction";
+import { clearErrors, getBook } from "../../actions/bookAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 
@@ -19,10 +19,11 @@ const Book = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors());
     }
     dispatch(getBook());
-  }, [dispatch, error]);
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
