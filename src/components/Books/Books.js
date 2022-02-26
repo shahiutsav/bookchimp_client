@@ -8,9 +8,11 @@ import Loader from "../layout/Loader/Loader";
 import BookCard from "./BookCard/BookCard";
 
 import { useAlert } from "react-alert";
+import { useParams } from "react-router-dom";
 
 const Book = () => {
   const alert = useAlert();
+  const { keyword } = useParams();
 
   const dispatch = useDispatch();
   const { loading, error, books, bookCount } = useSelector(
@@ -22,8 +24,8 @@ const Book = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getBook());
-  }, [dispatch, error, alert]);
+    dispatch(getBook(keyword));
+  }, [dispatch, error, alert, keyword]);
 
   return (
     <Fragment>

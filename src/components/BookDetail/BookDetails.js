@@ -13,6 +13,7 @@ import { clearErrors, getBookDetails } from "../../actions/bookAction";
 
 // Style import
 import "./BookDetails.css";
+import MetaData from "../layout/MetaData.js";
 
 const BookDetails = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const BookDetails = () => {
 
   return (
     <Fragment>
+      <MetaData title={`BookChimp - ${book.name}`} />
       {loading ? (
         <Loader />
       ) : (
