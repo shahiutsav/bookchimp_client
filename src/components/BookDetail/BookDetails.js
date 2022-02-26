@@ -64,7 +64,7 @@ const BookDetails = () => {
               </div>
 
               {/* Details about the book */}
-              <div class="col-2">
+              <div className="col-2">
                 <h1>{book.name}</h1>
                 <h4>{`$ ${book.price}`} </h4>
 
@@ -94,11 +94,13 @@ const BookDetails = () => {
             </div>
           </div>
 
-          <h1 class="reviewsHeading">Reviews</h1>
+          <h1 className="reviewsHeading">Reviews</h1>
           {book.reviews && book.reviews[0] ? (
             <div className="reviews">
               {book.reviews &&
-                book.reviews.map((review) => <ReviewCard review={review} />)}
+                book.reviews.map((review) => (
+                  <ReviewCard review={review} key={review._id} />
+                ))}
             </div>
           ) : (
             <p className="noReviews">No Reviews Yet</p>

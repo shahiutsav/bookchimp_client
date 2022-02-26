@@ -67,6 +67,7 @@ h4 {
   margin: 0 auto;
 }
 
+/* pagination styling */
 .pagination-box {
   display: flex;
   justify-content: center;
