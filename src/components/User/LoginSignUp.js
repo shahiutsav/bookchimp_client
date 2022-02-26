@@ -6,7 +6,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, login } from "../../actions/userAction";
+import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 
@@ -48,7 +48,7 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    console.log("Register Form submitted");
+    dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
@@ -61,7 +61,7 @@ const LoginSignUp = () => {
           setAvatar(reader.result);
         }
       };
-      reader.readAsDataURL(e.target.file([0]));
+      reader.readAsDataURL(e.target.files[0]);
     } else {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
