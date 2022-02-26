@@ -21,6 +21,7 @@ export const bookReducer = (state = { books: [] }, action) => {
         loading: false,
         books: action.payload.books,
         bookCount: action.payload.bookCount,
+        resultPerPage: action.payload.resultPerPage,
       };
 
     case ALL_BOOK_FAIL:

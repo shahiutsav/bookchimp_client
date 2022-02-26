@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./Books.css";
 import MetaData from "../layout/MetaData";
 import { clearErrors, getBook } from "../../actions/bookAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
+import Pagination from "react-js-pagination";
 
 import BookCard from "./BookCard/BookCard";
 
@@ -15,17 +16,24 @@ const Book = () => {
   const { keyword } = useParams();
 
   const dispatch = useDispatch();
-  const { loading, error, books, bookCount } = useSelector(
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { loading, error, books, bookCount, resultPerPage } = useSelector(
     (state) => state.books
   );
+
+  const setCurrentPageNo = (e) => {
+    setCurrentPage(e);
+  };
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
-    dispatch(getBook(keyword));
-  }, [dispatch, error, alert, keyword]);
+    dispatch(getBook(keyword, currentPage));
+  }, [dispatch, error, alert, keyword, currentPage]);
 
   return (
     <Fragment>
@@ -40,6 +48,25 @@ const Book = () => {
               {books &&
                 books.map((book) => <BookCard book={book} key={book._id} />)}
             </div>
+
+            {resultPerPage < bookCount && (
+              <div className="pagination-box">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={resultPerPage}
+                  totalItemsCount={bookCount}
+                  onChange={setCurrentPageNo}
+                  nextPageText=">"
+                  prevPageText="<"
+                  firstPageText="<<"
+                  lastPageText=">>"
+                  itemClass="page-item"
+                  linkClass="page-link"
+                  activeClass="pageItemActive"
+                  activeLinkClass="pageLinkActive"
+                />
+              </div>
+            )}
           </Fragment>
         )}
       </div>
