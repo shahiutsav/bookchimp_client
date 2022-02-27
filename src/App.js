@@ -15,6 +15,7 @@ import UserOptions from "./components/layout/Navbar/UserOptions";
 import { useSelector } from "react-redux";
 import Profile from "./components/User/Profile.js";
 import ProtectedRoute from "./components/Route/ProtectedRoute";
+import UpdateProfile from "./components/User/UpdateProfile.js"
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -41,6 +42,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/me/update"
+            element={
+              <ProtectedRoute>
+                <UpdateProfile />
               </ProtectedRoute>
             }
           />

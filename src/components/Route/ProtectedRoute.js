@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     <Fragment>
       {loading === false && (
         <Fragment>
-          ({isAuthenticated ? children : <Navigate to="/login" />})
+          {isAuthenticated ? children : <Navigate to="/login" />}
         </Fragment>
       )}
     </Fragment>

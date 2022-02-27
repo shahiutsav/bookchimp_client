@@ -13,9 +13,9 @@ import MetaData from "../layout/MetaData";
 
 const LoginSignUp = () => {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const alert = useAlert();
+  
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
