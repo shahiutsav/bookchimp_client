@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MenuItemsAuthenticated } from "./MenuItemsAuthenticated";
-import { Button } from "../../Button";
 import logo from "../../../images/logo.svg";
 import "./NavbarAuthenticated.css";
 

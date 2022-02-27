@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import MetaData from "../layout/MetaData";
 
 const LoginSignUp = () => {
   const navigate = useNavigate();
@@ -102,6 +103,7 @@ const LoginSignUp = () => {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title= "Bookchimp - Login" />
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
               <div>

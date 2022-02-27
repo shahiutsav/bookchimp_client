@@ -13,6 +13,8 @@ import store from "./store";
 import { loadUser } from "./actions/userAction";
 import UserOptions from "./components/layout/Navbar/UserOptions";
 import { useSelector } from "react-redux";
+import Profile from "./components/User/Profile.js";
+import ProtectedRoute from "./components/Route/ProtectedRoute";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -34,6 +36,14 @@ function App() {
           <Route path="/book/:id" element={<BookDetails />} />
           <Route path="/books/:keyword" element={<Book />} />
           <Route path="/search" element={<Search />} />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/login" element={<LoginSignUp />} />
         </Routes>
       </Router>

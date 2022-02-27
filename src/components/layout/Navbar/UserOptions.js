@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import "./UserOptions.css";
-import Backdrop from "@material-ui/core/Backdrop";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonIcon from "@material-ui/icons/Person";
@@ -50,7 +49,6 @@ const UserOptions = ({ user }) => {
 
   return (
     <Fragment>
-      <Backdrop open={open} atyle={{ zIndex: "10" }} />
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
         onClose={() => setOpen(false)}
