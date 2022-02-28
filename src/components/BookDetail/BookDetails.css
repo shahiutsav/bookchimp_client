@@ -21,20 +21,34 @@
   font-weight: bold;
 }
 
-.book-details input {
-  width: 50px;
-  height: 40px;
-  padding-left: 10px;
-  font-size: 20px;
-  margin-right: 10px;
-  border: 1px solid #ff523b;
-  border-radius: 5px;
+.cartActions {
+margin-left: 8px
 }
 
-input:focus {
+.cartActions > input {
+  border: none;
+  padding: 0.5vmax;
+  width: 5vmax;
+  text-align: center;
   outline: none;
+  font: 400 0.8vmax "Roboto";
+  color: rgba(0, 0, 0, 0.74);
 }
 
+.cartActions > button {
+  width: 50px;
+  display: inline-block;
+  background: #493a30;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.cartActions > button:hover {
+  background-color: rgba(0, 0, 0, 0.767);
+}
 .book-details h3 {
   margin: 20px 0;
   font-size: 22px;

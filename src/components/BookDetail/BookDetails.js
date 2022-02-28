@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAlert } from "react-alert";
+import { addItemsToCart } from "../../actions/cartAction";
 
 // Additional components
 import ReactStars from "react-rating-stars-component";
@@ -22,6 +23,25 @@ const BookDetails = () => {
 
   const { book, loading, error } = useSelector((state) => state.bookDetails);
 
+  const increaseQuantity = () => {
+    if (book.stock <= quantity) return;
+
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    alert.success("Item Added To Cart");
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -39,6 +59,8 @@ const BookDetails = () => {
     isHalf: true,
     size: window.innerWidth < 600 ? 20 : 25,
   };
+
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <Fragment>
@@ -76,13 +98,24 @@ const BookDetails = () => {
                 </div>
 
                 {/* Add to cart section */}
-                <input type="number" value="1" />
-                <button className="btnAddToCart">Add To Cart</button>
+
+                {book.stock < 1 ? null : (
+                  <div>
+                    <div className="cartActions">
+                      <button onClick={decreaseQuantity}>-</button>
+                      <input readOnly type="number" value={quantity} />
+                      <button onClick={increaseQuantity}>+</button>
+                    </div>
+                    <button onClick={addToCartHandler} className="btnAddToCart">
+                      Add To Cart
+                    </button>
+                  </div>
+                )}
 
                 {/* is In Stock ? Section */}
                 <p>
-                  <b className={book.Stock < 1 ? "redColor" : "greenColor"}>
-                    {book.Stock < 1 ? "Out of tock" : "In stock"}
+                  <b className={book.stock < 1 ? "redColor" : "greenColor"}>
+                    {book.stock < 1 ? "Out of stock" : "In stock"}
                   </b>
                 </p>
 

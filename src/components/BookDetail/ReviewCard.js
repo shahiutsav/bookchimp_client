@@ -15,7 +15,7 @@ const ReviewCard = ({ review }) => {
       <div className="head-review">
         <img
           className="review-image"
-          src="https://img.search.brave.com/IuiHnmk9H8K3pRO6_52C2smHfu5Cs8aj8-p9t9etzxw/rs:fit:1046:1200:1/g:ce/aHR0cHM6Ly9pLnJl/ZGQuaXQvOGN6c2Zr/andzb2s0MS5qcGc"
+          src="https://img.search.brave.com/eK5fY5lImCUFw0e1jggMdUXvVhwbYFBy_VPwXoK33dw/rs:fit:416:416:1/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vdmVjdG9y/cy9wcm9maWxlLWlj/b24tbWFsZS1hdmF0/YXItcG9ydHJhaXQt/Y2FzdWFsLXBlcnNv/bi12ZWN0b3ItaWQ1/MzA4Mjc4NTM_az02/Jm09NTMwODI3ODUz/JnM9MTcwNjY3YSZ3/PTAmaD1pbkVtOUpo/YkdkdmhLS2Vsdnpk/eVI0NHBORzVDVTk4/RFEwZ29SaEtMVmlB/PQ"
           width="100px"
         />
       </div>
